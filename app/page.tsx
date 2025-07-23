@@ -1,48 +1,29 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import api from '@/lib/api';
+// app/page.tsx
 import { Product, ProductsResponse } from '@/lib/types';
-import Loader from '@/components/Loader';
 import ProductCard from '@/components/ProductCard';
 import styles from '@/styles/Home.module.scss';
 
-export default function HomePage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const { data } = await api.get<ProductsResponse>('/products', {
-          params: { limit: 12 },
-        });
-        setProducts(data.products);
-      } catch (err: any) {
-        setError('Не удалось загрузить товары');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className={styles.center}>
-        <Loader />
-      </div>
-    );
+async function getProducts(): Promise<Product[]> {
+  const res = await fetch('https://dummyjson.com/products?limit=12', {
+    // если ISR:
+    // next: { revalidate: 60 },
+  });
+  if (!res.ok) {
+    throw new Error('Не удалось получить товары');
   }
+  const { products } = (await res.json()) as ProductsResponse;
+  return products;
+}
 
-  if (error) {
+export default async function HomePage() {
+  let products: Product[];
+
+  try {
+    products = await getProducts();
+  } catch (err) {
     return (
       <div className={styles.center}>
-        <p className={styles.error}>{error}</p>
+        <p className={styles.error}>Не удалось загрузить товары</p>
       </div>
     );
   }

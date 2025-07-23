@@ -1,7 +1,9 @@
+// hooks/useAuth.ts
 import { persist } from 'zustand/middleware';
 import create from 'zustand';
 import api from '@/lib/api';
 import { AuthResponse, User } from '@/lib/types';
+import { useCart } from '@/hooks/useCart';   // <-- импортируем
 
 interface AuthState {
   token: string | null;
@@ -23,11 +25,10 @@ export const useAuth = create<AuthState>()(
       login: async (username, password) => {
         set({ loading: true, error: null });
         try {
-          // добавляем expiresInMins, типизируем под AuthResponse
           const { data } = await api.post<AuthResponse>('/auth/login', {
             username,
             password,
-            expiresInMins: 60, //\в примере есть
+            expiresInMins: 60,
           });
 
           set({
@@ -50,7 +51,10 @@ export const useAuth = create<AuthState>()(
       },
 
       logout: () => {
+        // сбрасываем токен и пользователя
         set({ token: null, user: null });
+        // и очищаем корзину текущего пользователя
+        // useCart.getState().clearCart();
       },
     }),
     {

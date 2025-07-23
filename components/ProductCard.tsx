@@ -1,8 +1,11 @@
+// components/ProductCard.tsx
 'use client';
 
 import Image from 'next/image';
 import { useAuth } from '@/hooks/useAuth';
+import { useCart } from '@/hooks/useCart';
 import { Product } from '@/lib/types';
+import { useState, useEffect } from 'react';
 import styles from '@/styles/ProductCard.module.scss';
 
 interface ProductCardProps {
@@ -11,11 +14,21 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { user } = useAuth();
+  const addItem = useCart((state) => state.addItem);
+
+  // Флаг монтирования — до гидрации кнопки нет
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleAddToCart = () => {
+    addItem(product);
+  };
 
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
-        {/* используем <Imagе для оптимизации */}
         <Image
           src={product.thumbnail}
           alt={product.title}
@@ -30,8 +43,17 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className={styles.category}>{product.category}</p>
         <p className={styles.price}>${product.price.toFixed(2)}</p>
 
-        {user && (
-          <button className={styles.addButton}>
+        {/* 
+          После гидрации (mounted === true) покажем кнопку,
+          если пользователь авторизован 
+        */}
+        {mounted && user && (
+          <button
+            type="button"
+            className={styles.addButton}
+            onClick={handleAddToCart}
+            aria-label={`Добавить ${product.title} в корзину`}
+          >
             Add to cart
           </button>
         )}

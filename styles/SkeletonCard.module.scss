@@ -1,0 +1,42 @@
+@keyframes pulse {
+  0% {
+    background-color: var(--card-border);
+  }
+  50% {
+    background-color: var(--card-bg);
+  }
+  100% {
+    background-color: var(--card-border);
+  }
+}
+
+.card {
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.image {
+  width: 100%;
+  padding-top: 100%; /* квадрат */
+  background-color: var(--card-border);
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.line {
+  height: 12px;
+  background-color: var(--card-border);
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}

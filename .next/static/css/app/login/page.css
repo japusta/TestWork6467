@@ -5,7 +5,7 @@
   width: 36px;
   height: 36px;
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #333;
+  border-left-color: var(--text-color);
   border-radius: 50%;
   animation: Loader_spin__jgnPE 1s linear infinite;
   margin: 0 auto;
@@ -23,16 +23,16 @@
   max-width: 400px;
   margin: 4rem auto;
   padding: 2rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--card-border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--card-bg);
 }
 
 .Login_title__Glinj {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.75rem;
-  color: #222;
+  color: var(--text-color);
 }
 
 .Login_form__tJI3R {
@@ -43,9 +43,11 @@
 
 .Login_input__Up_lk {
   padding: 0.75rem 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--card-border);
   border-radius: 4px;
   font-size: 1rem;
+  color: var(--text-color);
+  background: var(--bg-color);
 }
 
 .Login_button__vMy_q {
@@ -54,8 +56,8 @@
   font-weight: 500;
   border: none;
   border-radius: 4px;
-  background: #111;
-  color: #fff;
+  background: var(--btn-bg);
+  color: var(--btn-text);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -68,7 +70,7 @@
 }
 
 .Login_error__FQW6a {
-  color: #c00;
+  color: var(--error-color);
   font-size: 0.9rem;
   text-align: center;
 }

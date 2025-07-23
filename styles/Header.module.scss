@@ -1,7 +1,7 @@
 .header {
-  background: #111;
+background: var(--header-bg);
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: var(--header-text);
 }
 .inner {
   max-width: 1200px;
@@ -9,19 +9,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+
 }
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--header-text);
 }
 .nav ul {
   list-style: none;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .nav a {
-  color: #eee;
+  color: var(--header-text);
   text-decoration: none;
 }
 .auth {
@@ -32,12 +35,51 @@
 .login,
 .logout {
   background: transparent;
-  border: 1px solid #fff;
+  text-decoration: none;
+  border: 1px solid var(--header-text);
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   cursor: pointer;
-  color: #fff;
+  color: var(--header-text);
 }
 .userName {
   font-weight: 500;
+}
+
+.cartLink {
+  position: relative;
+  padding: 0.25rem 0.5rem;
+  color: var(--header-text);
+  text-decoration: none;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--accent-color);
+  color: var(--btn-danger-text);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+
+@media (max-width: 768px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .nav {
+    width: 100%;
+  }
+  .nav ul {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .nav a {
+    padding: 0.25rem 0;
+  }
 }

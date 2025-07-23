@@ -4,9 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
 import styles from '@/styles/Header.module.scss';
+import { useCart } from '@/hooks/useCart';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const { user, logout } = useAuth();
+  const totalCount = useCart((state) => state.totalCount());
 
   // aлаг, что мы уже на клиенте
   const [mounted, setMounted] = useState(false);
@@ -87,7 +90,18 @@ export default function Header() {
               Login
             </Link>
           )}
+
+          {/* Бэйджик корзины */}
+          <Link href="/cart" className={styles.cartLink}>
+            Cart
+            {mounted && totalCount > 0 && (
+              <span className={styles.badge}>{totalCount}</span>
+            )}
+          </Link>
         </div>
+
+               {/* Кнопка переключения темы */}
+      <ThemeToggle />
       </div>
     </header>
   );

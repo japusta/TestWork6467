@@ -1,26 +1,74 @@
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[14].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[14].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[14].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[14].use[5]!./app/globals.scss ***!
   \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-html,
+@charset "UTF-8";
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen;
-  background: #fff;
-  color: #222;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* globals.scss */
+:root {
+  /* базовые цвета */
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --accent-color: #e60023;
+  /* header */
+  --header-bg: #111111;
+  --header-text: #ffffff;
+  /* footer */
+  --footer-bg: #f5f5f5;
+  --footer-text: #333333;
+  /* карточки товара */
+  --card-bg: #ffffff;
+  --card-border: #eeeeee;
+  /* кнопки */
+  --btn-bg: #111111;
+  --btn-text: #ffffff;
+  /* кнопки действий (удалить, очистить) */
+  --btn-danger-bg: var(--accent-color);
+  --btn-danger-text: #ffffff;
+  /* ошибки */
+  --error-color: #c00;
+}
+
+/* dark theme (если используете) */
+[data-theme=dark] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #ff4c4c;
+  --header-bg: #000000;
+  --header-text: #ffffff;
+  --footer-bg: #1f1f1f;
+  --footer-text: #e0e0e0;
+  --card-bg: #1f1f1f;
+  --card-border: #333333;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
+  --btn-danger-bg: var(--accent-color);
+  --btn-danger-text: #000000;
+  --error-color: #ff6b6b;
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[10].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[10].use[5]!./styles/ThemeToggle.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* styles/ThemeToggle.module.scss */
+.ThemeToggle_toggle__i5shR {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  margin-left: 1rem;
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[10].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[10].use[5]!./styles/Header.module.scss ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 .Header_header__ubBbX {
-  background: #111;
+  background: var(--header-bg);
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: var(--header-text);
 }
 
 .Header_inner__TQ3B4 {
@@ -29,22 +77,24 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .Header_logo__c1BRW {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--header-text);
 }
 
 .Header_nav__7eR_W ul {
   list-style: none;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .Header_nav__7eR_W a {
-  color: #eee;
+  color: var(--header-text);
   text-decoration: none;
 }
 
@@ -57,15 +107,53 @@ a {
 .Header_login__6iGps,
 .Header_logout__pJ2m3 {
   background: transparent;
-  border: 1px solid #fff;
+  text-decoration: none;
+  border: 1px solid var(--header-text);
   padding: 0.25rem 0.75rem;
   border-radius: 4px;
   cursor: pointer;
-  color: #fff;
+  color: var(--header-text);
 }
 
 .Header_userName__1kDoi {
   font-weight: 500;
+}
+
+.Header_cartLink__QszlD {
+  position: relative;
+  padding: 0.25rem 0.5rem;
+  color: var(--header-text);
+  text-decoration: none;
+}
+
+.Header_badge__whaqZ {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: var(--accent-color);
+  color: var(--btn-danger-text);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .Header_inner__TQ3B4 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .Header_nav__7eR_W {
+    width: 100%;
+  }
+  .Header_nav__7eR_W ul {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .Header_nav__7eR_W a {
+    padding: 0.25rem 0;
+  }
 }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[10].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[10].use[5]!./styles/Footer.module.scss ***!

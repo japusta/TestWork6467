@@ -1,0 +1,64 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid var(--card-border);
+  padding: 1rem 0;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+}
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.total {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.clear {
+  padding: 0.5rem 1rem;
+  background: var(--btn-danger-bg);
+  color: var(--btn-danger-text);
+  border: none;
+  cursor: pointer;
+}
