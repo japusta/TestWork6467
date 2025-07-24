@@ -27,8 +27,9 @@
     gap: 1rem;
     margin: 0;
     padding: 0;
-    list-style: none; 
+    list-style: none;
   }
+
   a {
     color: var(--header-text);
     text-decoration: none;
@@ -40,6 +41,7 @@
   align-items: center;
   gap: 0.75rem;
 }
+
 .login,
 .logout {
   background: transparent;
@@ -50,9 +52,11 @@
   cursor: pointer;
   text-decoration: none;
 }
+
 .userName {
   font-weight: 500;
 }
+
 .cartLink {
   position: relative;
   color: var(--header-text);
@@ -72,7 +76,7 @@
 .controls {
   display: flex;
   align-items: center;
-  gap: 1rem; 
+  gap: 1rem;
 }
 
 .burger {
@@ -84,6 +88,7 @@
   padding: 0.25rem;
   cursor: pointer;
 }
+
 .burgerLine {
   width: 24px;
   height: 2px;
@@ -94,7 +99,7 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .nav,
   .auth {
     display: none;
@@ -112,14 +117,17 @@
     right: 0;
     background: var(--header-bg);
   }
+
   .mobileNav ul {
     margin: 0;
     padding: 0;
-    list-style: none; 
+    list-style: none;
   }
+
   .mobileNav li + li {
     border-top: 1px solid var(--card-border);
   }
+
   .mobileNav a,
   .logoutMobile {
     display: block;

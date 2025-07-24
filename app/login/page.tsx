@@ -58,17 +58,9 @@ export default function LoginPage() {
           disabled={loading}
         />
 
-        {(formError || error) && (
-          <div className={styles.error}>
-            {formError || error}
-          </div>
-        )}
+        {(formError || error) && <div className={styles.error}>{formError || error}</div>}
 
-        <button
-          type="submit"
-          className={styles.button}
-          disabled={loading}
-        >
+        <button type="submit" className={styles.button} disabled={loading}>
           {loading ? <Loader /> : 'Login'}
         </button>
       </form>

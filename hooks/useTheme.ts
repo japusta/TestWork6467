@@ -22,6 +22,6 @@ export const useTheme = create<ThemeState>()(
     {
       name: 'dummyjson-theme',
       getStorage: () => localStorage,
-    }
-  )
+    },
+  ),
 );

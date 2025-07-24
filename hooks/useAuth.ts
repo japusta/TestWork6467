@@ -1,8 +1,9 @@
+// hooks/useAuth.ts
 import { persist } from 'zustand/middleware';
 import create from 'zustand';
 import api from '@/lib/api';
 import { AuthResponse, User } from '@/lib/types';
-import { useCart } from '@/hooks/useCart'; 
+// удалили неиспользуемый импорт useCart
 
 interface AuthState {
   token: string | null;
@@ -40,9 +41,18 @@ export const useAuth = create<AuthState>()(
             },
             loading: false,
           });
-        } catch (err: any) {
+        } catch (err: unknown) {
+          // аккуратно сузим тип и извлечём сообщение, если это AxiosError
+          let message = 'Login failed';
+          if (typeof err === 'object' && err !== null) {
+            const axiosErr = err as { response?: { data?: { message?: string } } };
+            if (axiosErr.response?.data?.message) {
+              message = axiosErr.response.data.message;
+            }
+          }
+
           set({
-            error: err.response?.data?.message || 'Login failed',
+            error: message,
             loading: false,
           });
           throw err;
@@ -50,14 +60,14 @@ export const useAuth = create<AuthState>()(
       },
 
       logout: () => {
-        // сбрасываем токен и пользователя
         set({ token: null, user: null });
+        // если нужно очищать корзину при логауте, раскомментируйте:
         // useCart.getState().clearCart();
       },
     }),
     {
       name: 'dummyjson-auth',
       getStorage: () => localStorage,
-    }
-  )
+    },
+  ),
 );

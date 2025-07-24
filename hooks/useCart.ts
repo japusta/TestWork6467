@@ -49,11 +49,9 @@ export const useCart = create<CartState>((set, get) => ({
     set({ items: [] });
   },
 
-  totalCount: () =>
-    get().items.reduce((sum, it) => sum + it.quantity, 0),
+  totalCount: () => get().items.reduce((sum, it) => sum + it.quantity, 0),
 
-  totalPrice: () =>
-    get().items.reduce((sum, it) => sum + it.quantity * it.product.price, 0),
+  totalPrice: () => get().items.reduce((sum, it) => sum + it.quantity * it.product.price, 0),
 }));
 
 //  подписка на любые изменения items и сохраняем в localStorage
@@ -62,7 +60,9 @@ const saveCartToStorage = (items: CartItem[]) => {
   const key = getStorageKey(userId);
   try {
     localStorage.setItem(key, JSON.stringify(items));
-  } catch {}
+  } catch (error) {
+    console.error('Cart save error:', error);
+  }
 };
 
 useCart.subscribe((state) => {
@@ -78,7 +78,9 @@ const loadCartFromStorage = (userId?: number) => {
   try {
     const raw = localStorage.getItem(key);
     if (raw) items = JSON.parse(raw);
-  } catch {}
+  } catch (error) {
+    console.error('Cart load error:', error);
+  }
   useCart.setState({ items });
 };
 

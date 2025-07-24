@@ -29,19 +29,19 @@
   gap: 1rem;
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .container {
     padding: 0 0.5rem;
   }

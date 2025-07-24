@@ -21,11 +21,7 @@ export default function Footer() {
         {/* всегда рендерим © год на сервере и при первой отрисовке клиента */}
         <span>© {year}</span>
 
-        {mounted && user && (
-          <span className={styles.logged}>
-            Logged as {user.email}
-          </span>
-        )}
+        {mounted && user && <span className={styles.logged}>Logged as {user.email}</span>}
       </div>
     </footer>
   );

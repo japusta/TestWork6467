@@ -32,7 +32,7 @@ body {
 }
 
 /* темная тема */
-[data-theme=dark] {
+[data-theme='dark'] {
   --bg-color: #121212;
   --text-color: #e0e0e0;
   --accent-color: #ff4c4c;

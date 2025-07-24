@@ -10,7 +10,7 @@ export default function CartPage() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  // берём корзину 
+  // берём корзину
   const items = useCart((s) => s.items);
   const totalPrice = useCart((s) => s.totalPrice());
   const { removeItem, addItem, clearCart } = useCart();
@@ -51,13 +51,8 @@ export default function CartPage() {
               </ul>
 
               <div className={styles.footer}>
-                <span className={styles.total}>
-                  Total: ${totalPrice.toFixed(2)}
-                </span>
-                <button
-                  className={styles.clear}
-                  onClick={() => clearCart()}
-                >
+                <span className={styles.total}>Total: ${totalPrice.toFixed(2)}</span>
+                <button className={styles.clear} onClick={() => clearCart()}>
                   Очистить корзину
                 </button>
               </div>

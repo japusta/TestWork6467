@@ -6,25 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "style:lint": "stylelint \"styles/**/*.scss\" \"**/*.module.scss\" --fix"
   },
   "dependencies": {
     "axios": "^1.4.0",
     "next": "13.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "stylelint": "^16.22.0",
     "zustand": "^4.5.7"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",
     "@types/react": "^18.2.7",
-    "eslint": "8.41.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "13.4.3",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.1.0",
+    "eslint-plugin-react": "^7.37.5",
+    "postcss-scss": "^4.0.9",
     "prettier": "3.1.0",
     "sass": "^1.63.6",
+    "stylelint": "^16.22.0",
+    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-scss": "^6.12.1",
     "typescript": "^5.1.6"
   }
 }
