@@ -59,6 +59,25 @@
   background: #333;
   opacity: 0.8;
 }
+
+@media (max-width: 767px) {
+  .ProductCard_card__irOXe {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .ProductCard_info__5kF8a {
+    padding: 0.75rem;
+  }
+  .ProductCard_title__nib_K {
+    font-size: 1rem;
+  }
+  .ProductCard_price__eAURa {
+    font-size: 1rem;
+  }
+  .ProductCard_addButton__Mud9f {
+    font-size: 0.85rem;
+  }
+}
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[2].oneOf[10].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[2].oneOf[10].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[2].oneOf[10].use[5]!./styles/Home.module.scss ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -92,4 +111,20 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   grid-gap: 1rem;
   gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .Home_grid__npx0i {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  .Home_grid__npx0i {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .Home_container__97eC3 {
+    padding: 0 0.5rem;
+  }
 }

@@ -9,7 +9,7 @@ export default function ThemeToggle() {
   const theme = useTheme((s) => s.theme);
   const toggle = useTheme((s) => s.toggle);
 
-  // флаг монтирования (на сервере и до гидрации — false)
+  // флаг монтирования (на сервере и до гидрации false)
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);

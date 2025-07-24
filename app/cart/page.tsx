@@ -10,17 +10,16 @@ export default function CartPage() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  // Берём корзину (изначально сервер видит [] — пусто)
+  // берём корзину 
   const items = useCart((s) => s.items);
   const totalPrice = useCart((s) => s.totalPrice());
   const { removeItem, addItem, clearCart } = useCart();
 
   return (
     <div className={styles.container}>
-      {/* Заголовок — статично отдаётся и на сервере, и на клиенте */}
       <h1>Ваша корзина</h1>
 
-      {/* Ниже — только после монтирования показываем содержимое */}
+      {/* только после монтирования показываем содержимое */}
       {mounted && (
         <>
           {items.length === 0 ? (

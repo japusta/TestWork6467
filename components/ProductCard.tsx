@@ -1,4 +1,3 @@
-// components/ProductCard.tsx
 'use client';
 
 import Image from 'next/image';
@@ -16,7 +15,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { user } = useAuth();
   const addItem = useCart((state) => state.addItem);
 
-  // Флаг монтирования — до гидрации кнопки нет
+  // Флаг монтирования , до гидрации кнопки нет
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -43,10 +42,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className={styles.category}>{product.category}</p>
         <p className={styles.price}>${product.price.toFixed(2)}</p>
 
-        {/* 
-          После гидрации (mounted === true) покажем кнопку,
-          если пользователь авторизован 
-        */}
         {mounted && user && (
           <button
             type="button"

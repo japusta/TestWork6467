@@ -1,9 +1,8 @@
-// hooks/useAuth.ts
 import { persist } from 'zustand/middleware';
 import create from 'zustand';
 import api from '@/lib/api';
 import { AuthResponse, User } from '@/lib/types';
-import { useCart } from '@/hooks/useCart';   // <-- импортируем
+import { useCart } from '@/hooks/useCart'; 
 
 interface AuthState {
   token: string | null;
@@ -53,7 +52,6 @@ export const useAuth = create<AuthState>()(
       logout: () => {
         // сбрасываем токен и пользователя
         set({ token: null, user: null });
-        // и очищаем корзину текущего пользователя
         // useCart.getState().clearCart();
       },
     }),

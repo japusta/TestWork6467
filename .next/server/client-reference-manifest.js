@@ -1086,32 +1086,6 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./app/cart/page.tsx": {
-      "*": {
-        "id": "(sc_client)/./app/cart/page.tsx",
-        "name": "*",
-        "chunks": [
-          "app/cart/page:static/chunks/app/cart/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/cart/page.tsx",
-        "name": "",
-        "chunks": [
-          "app/cart/page:static/chunks/app/cart/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/cart/page.tsx",
-        "name": "default",
-        "chunks": [
-          "app/cart/page:static/chunks/app/cart/page.js"
-        ],
-        "async": false
-      }
-    },
     "(app-client)/./app/login/page.tsx": {
       "*": {
         "id": "(sc_client)/./app/login/page.tsx",
@@ -1163,6 +1137,32 @@ self.__RSC_MANIFEST={
         ],
         "async": false
       }
+    },
+    "(app-client)/./app/cart/page.tsx": {
+      "*": {
+        "id": "(sc_client)/./app/cart/page.tsx",
+        "name": "*",
+        "chunks": [
+          "app/cart/page:static/chunks/app/cart/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/cart/page.tsx",
+        "name": "",
+        "chunks": [
+          "app/cart/page:static/chunks/app/cart/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/cart/page.tsx",
+        "name": "default",
+        "chunks": [
+          "app/cart/page:static/chunks/app/cart/page.js"
+        ],
+        "async": false
+      }
     }
   },
   "edgeSSRModuleMapping": {},
@@ -1176,11 +1176,11 @@ self.__RSC_MANIFEST={
     "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\[section]\\page": [
       "static/css/app/[section]/page.css"
     ],
-    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page": [
-      "static/css/app/cart/page.css"
-    ],
     "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\login\\page": [
       "static/css/app/login/page.css"
+    ],
+    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page": [
+      "static/css/app/cart/page.css"
     ]
   },
   "clientModules": {
@@ -3465,37 +3465,6 @@ self.__RSC_MANIFEST={
         "static/css/app/[section]/page.css"
       ]
     },
-    "C:\\Users\\capta\\Desktop\\TestWork6467\\styles\\Cart.module.scss#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/cart/page.css"
-      ]
-    },
-    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page.tsx": {
-      "id": "(app-client)/./app/cart/page.tsx",
-      "name": "*",
-      "chunks": [
-        "app/cart/page:static/chunks/app/cart/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page.tsx#": {
-      "id": "(app-client)/./app/cart/page.tsx",
-      "name": "",
-      "chunks": [
-        "app/cart/page:static/chunks/app/cart/page.js"
-      ],
-      "async": false
-    },
-    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page.tsx#default": {
-      "id": "(app-client)/./app/cart/page.tsx",
-      "name": "default",
-      "chunks": [
-        "app/cart/page:static/chunks/app/cart/page.js"
-      ],
-      "async": false
-    },
     "C:\\Users\\capta\\Desktop\\TestWork6467\\styles\\Loader.module.scss#": {
       "id": "null",
       "name": "default",
@@ -3555,6 +3524,37 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app/login/page:static/chunks/app/login/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\capta\\Desktop\\TestWork6467\\styles\\Cart.module.scss#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/cart/page.css"
+      ]
+    },
+    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page.tsx": {
+      "id": "(app-client)/./app/cart/page.tsx",
+      "name": "*",
+      "chunks": [
+        "app/cart/page:static/chunks/app/cart/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page.tsx#": {
+      "id": "(app-client)/./app/cart/page.tsx",
+      "name": "",
+      "chunks": [
+        "app/cart/page:static/chunks/app/cart/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\capta\\Desktop\\TestWork6467\\app\\cart\\page.tsx#default": {
+      "id": "(app-client)/./app/cart/page.tsx",
+      "name": "default",
+      "chunks": [
+        "app/cart/page:static/chunks/app/cart/page.js"
       ],
       "async": false
     }

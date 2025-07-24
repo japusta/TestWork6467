@@ -1,4 +1,3 @@
-// app/page.tsx
 import { Product, ProductsResponse } from '@/lib/types';
 import ProductCard from '@/components/ProductCard';
 import styles from '@/styles/Home.module.scss';

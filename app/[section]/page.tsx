@@ -16,7 +16,7 @@ export default function SectionPage({ params: { section } }: SectionPageProps) {
       <h1 className={styles.heading}>{title}</h1>
       <p className={styles.text}>Этот раздел пока в разработке.</p>
       <Link href="/" className={styles.back}>
-        ← На главную
+        На главную
       </Link>
     </main>
   );

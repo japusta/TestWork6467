@@ -1,4 +1,3 @@
-// hooks/useCart.ts
 import create from 'zustand';
 import { useAuth } from '@/hooks/useAuth';
 import { Product } from '@/lib/types';
@@ -57,7 +56,7 @@ export const useCart = create<CartState>((set, get) => ({
     get().items.reduce((sum, it) => sum + it.quantity * it.product.price, 0),
 }));
 
-// 1) Подписываемся на любые изменения items → сохраняем в localStorage
+//  подписка на любые изменения items и сохраняем в localStorage
 const saveCartToStorage = (items: CartItem[]) => {
   const userId = useAuth.getState().user?.id;
   const key = getStorageKey(userId);
@@ -66,14 +65,13 @@ const saveCartToStorage = (items: CartItem[]) => {
   } catch {}
 };
 
-// subscribe
 useCart.subscribe((state) => {
   saveCartToStorage(state.items);
 });
 // ручной вызов сразу же после подписки (fireImmediately)
 saveCartToStorage(useCart.getState().items);
 
-// 2) Подписываемся на изменение user → подгружаем свою корзину из localStorage
+// одписываемся на изменение user и подгружаем свою корзину из localStorage
 const loadCartFromStorage = (userId?: number) => {
   const key = getStorageKey(userId);
   let items: CartItem[] = [];
