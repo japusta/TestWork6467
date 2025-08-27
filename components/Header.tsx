@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
+import { useCart } from '@/hooks/useCart'; // 👈 добавили
 import ThemeToggle from '@/components/ThemeToggle';
 import styles from '@/styles/Header.module.scss';
 
 export default function Header() {
   const { user, logout } = useAuth();
+  const count = useCart((s) => s.totalCount()); // 👈 берём количество товаров
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -64,9 +66,12 @@ export default function Header() {
               Login
             </Link>
           )}
+
           <Link href="/cart" className={styles.cartLink}>
             Cart
-            {mounted && <span className={styles.badge}>{/* totalCount */}</span>}
+            {mounted && count > 0 && (
+              <span className={styles.badge}>{count}</span> // 👈 вставили число
+            )}
           </Link>
         </div>
 
@@ -114,9 +119,11 @@ export default function Header() {
               )}
 
               <li>
-                <Link href="/cart" onClick={() => setMenuOpen(false)}>
+                <Link href="/cart" onClick={() => setMenuOpen(false)} className={styles.cartLink}>
                   Cart
-                  <span className={styles.badge}>{/* totalCount */}</span>
+                  {mounted && count > 0 && (
+                    <span className={styles.badge}>{count}</span> // 👈 и тут для мобилки
+                  )}
                 </Link>
               </li>
             </ul>

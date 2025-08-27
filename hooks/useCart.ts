@@ -54,8 +54,10 @@ export const useCart = create<CartState>((set, get) => ({
   totalPrice: () => get().items.reduce((sum, it) => sum + it.quantity * it.product.price, 0),
 }));
 
-//  подписка на любые изменения items и сохраняем в localStorage
+// localStorage только в браузере 
+
 const saveCartToStorage = (items: CartItem[]) => {
+  if (typeof window === 'undefined') return; 
   const userId = useAuth.getState().user?.id;
   const key = getStorageKey(userId);
   try {
@@ -65,14 +67,8 @@ const saveCartToStorage = (items: CartItem[]) => {
   }
 };
 
-useCart.subscribe((state) => {
-  saveCartToStorage(state.items);
-});
-// ручной вызов сразу же после подписки (fireImmediately)
-saveCartToStorage(useCart.getState().items);
-
-// одписываемся на изменение user и подгружаем свою корзину из localStorage
 const loadCartFromStorage = (userId?: number) => {
+  if (typeof window === 'undefined') return; 
   const key = getStorageKey(userId);
   let items: CartItem[] = [];
   try {
@@ -84,8 +80,16 @@ const loadCartFromStorage = (userId?: number) => {
   useCart.setState({ items });
 };
 
+// подписка на изменения items
+useCart.subscribe((state) => {
+  saveCartToStorage(state.items);
+});
+// сразу после подписки (fireImmediately)
+saveCartToStorage(useCart.getState().items);
+
+// подписка на изменение user
 useAuth.subscribe((authState) => {
   loadCartFromStorage(authState.user?.id);
 });
-// и сразу один раз загрузим на старте
+// и один раз при старте
 loadCartFromStorage(useAuth.getState().user?.id);
