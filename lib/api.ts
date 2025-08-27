@@ -17,4 +17,24 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// перехват 401  обновляем токен и повторяем запрос
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response?.status === 401) {
+      try {
+        await useAuth.getState().refreshAccessToken();
+        const token = useAuth.getState().token;
+        if (token && error.config) {
+          error.config.headers.Authorization = `Bearer ${token}`;
+          return api.request(error.config);
+        }
+      } catch {
+        useAuth.getState().logout();
+      }
+    }
+    return Promise.reject(error);
+  },
+);
+
 export default api;

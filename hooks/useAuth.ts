@@ -1,23 +1,24 @@
-// hooks/useAuth.ts
 import { persist } from 'zustand/middleware';
 import create from 'zustand';
 import api from '@/lib/api';
 import { AuthResponse, User } from '@/lib/types';
-// удалили неиспользуемый импорт useCart
 
 interface AuthState {
   token: string | null;
+  refreshToken: string | null;
   user: User | null;
   loading: boolean;
   error: string | null;
   login: (username: string, password: string) => Promise<void>;
+  refreshAccessToken: () => Promise<void>;
   logout: () => void;
 }
 
 export const useAuth = create<AuthState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       token: null,
+      refreshToken: null,
       user: null,
       loading: false,
       error: null,
@@ -33,6 +34,7 @@ export const useAuth = create<AuthState>()(
 
           set({
             token: data.accessToken,
+            refreshToken: data.refreshToken,
             user: {
               id: data.id,
               firstName: data.firstName,
@@ -42,7 +44,6 @@ export const useAuth = create<AuthState>()(
             loading: false,
           });
         } catch (err: unknown) {
-          // аккуратно сузим тип и извлечём сообщение, если это AxiosError
           let message = 'Login failed';
           if (typeof err === 'object' && err !== null) {
             const axiosErr = err as { response?: { data?: { message?: string } } };
@@ -59,10 +60,27 @@ export const useAuth = create<AuthState>()(
         }
       },
 
+      refreshAccessToken: async () => {
+        const { refreshToken } = get();
+        if (!refreshToken) return;
+
+        try {
+          const { data } = await api.post<AuthResponse>('/auth/refresh', {
+            refreshToken,
+          });
+
+          set({
+            token: data.accessToken,
+            refreshToken: data.refreshToken ?? refreshToken,
+          });
+        } catch (err) {
+          set({ token: null, refreshToken: null, user: null });
+          throw err;
+        }
+      },
+
       logout: () => {
-        set({ token: null, user: null });
-        // если нужно очищать корзину при логауте, раскомментируйте:
-        // useCart.getState().clearCart();
+        set({ token: null, refreshToken: null, user: null });
       },
     }),
     {
